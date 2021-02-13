@@ -1,0 +1,210 @@
+//
+// card
+//
+//
+
+
+.card {
+	&[class*="bordered"] { background: transparent; }
+}
+
+.card-header {
+	border-bottom: $border-width solid $border-color;
+}
+
+.card-image {
+	position: relative;
+	flex-shrink: 0;
+
+	a {
+		display: block;
+	}
+}
+
+.card-body {
+	+ .card-body {
+		padding-top: 0;
+	}
+}
+
+.card-title {
+	a {
+		@include transition;
+		color: inherit;
+
+		&:hover {
+			color: $primary;
+		}
+	}
+}
+
+.card-header-tabs {
+	margin-top: -$card-spacer-y;
+	margin-right: -$card-spacer-x;
+	margin-bottom: -$card-spacer-y!important;
+	margin-left: -$card-spacer-x;
+}
+
+
+// tile
+//
+.card-tile {
+	
+	.card-header,
+	.card-body,
+	.card-footer {
+		@include transition;
+		position: absolute;
+		left: 0;
+		right: 0;
+		border: 0;
+		padding: $card-spacer-x;
+		background: none;
+		z-index: 100;
+	}
+
+	.card-header { top: 0; }
+	.card-footer { bottom: 0; }
+
+	.card-body {
+		@include translate(0,-50%);
+		top: 50%;
+	}
+}
+
+
+// post
+//
+.card-post {
+	.card-body {
+		> *:not(:last-child) {
+			margin-bottom: rem(10);
+		}
+	}
+
+	.card-title {
+		text-transform: uppercase;
+		font-weight: $font-weight-bold;
+	}
+
+	.card-text {
+		color: $gray-700;
+	}
+
+	&[class*="-lg"] {
+		.card-body {
+			> *:not(:last-child) {
+				margin-bottom: rem(20);
+			}
+		}
+	}
+}
+
+
+
+// data
+//
+.card-data {
+	.card-header {
+		padding-top: 0;
+		padding-right: 0;
+		padding-bottom: 0;
+	}
+}
+
+
+
+// product
+//
+.card-product {
+	position: relative;
+	background: transparent;
+
+	&:hover {
+		.card-image {
+			img + img { opacity: 1; }
+		}
+	}
+
+	.card-image {
+		img + img {
+			@include transition;
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+		}
+
+		.badge {
+			position: absolute;
+			bottom: rem(10);
+			left: rem(10);
+		}
+	}
+
+	.card-title {
+		font-size: $font-size-base;
+		margin-bottom: 0;
+	}
+
+	.card-body {
+		position: absolute;
+		right: rem(10);
+		bottom: rem(10);
+		left: rem(10);
+		padding: rem(15);
+		background: $white;
+	}
+
+	.card-footer {
+		padding: rem(10) 0 0 0;
+	}
+
+	.action {
+		@include transition;
+		position: absolute;
+		top: rem(10);
+		right: rem(10);
+		z-index: 10;
+		background: $white;
+		border-radius: 50%;
+		width: rem(34);
+		height: rem(34);
+		text-align: center;
+
+		i {
+			@include transition;
+			@include translate(-50%,-50%);
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			font-size: $font-size-lg;
+			color: $gray-400;
+		}
+
+		&:hover {
+			background: $primary;
+
+			i {
+				color: $white;
+			}
+		}
+	}
+
+	.brand {
+		display: block;
+		font-size: $font-size-sm;
+		color: $gray-400;
+	}
+
+	.price {
+		font-size: $font-size-sm;
+		font-weight: $font-weight-bold;
+		color: $black;
+
+		s {
+			font-weight: $font-weight-normal;
+			color: $gray-400;
+		}
+	}
+}

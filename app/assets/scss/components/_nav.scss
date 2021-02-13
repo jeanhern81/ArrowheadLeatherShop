@@ -1,0 +1,231 @@
+//
+// nav
+//
+//
+
+.nav {
+	position: relative;
+
+	.nav-link{
+		@include transition;
+		color: $gray-600;
+
+		&[data-filter] { color: $gray-600; }
+
+		&.active { color: $black; }
+	}
+
+
+	+ .tab-content {
+		margin-top: rem(20);
+	}
+}
+
+// account menu
+//
+.nav-menu {
+	overflow: hidden;
+
+	a {
+		position: relative;
+		display: flex;
+		padding: $card-spacer-x $card-spacer-y;
+		color: $black;
+		-webkit-box-shadow: -1px -1px 0 0 $border-color;
+		-moz-box-shadow: -1px -1px 0 0 $border-color;
+		box-shadow: -1px -1px 0 0 $border-color;
+
+		i {
+			margin-right: $card-spacer-y;
+			font-size: rem(24);
+			align-items: center;
+		}
+
+		&::after {
+			@include transition;
+			position: absolute;
+		    content: "\e93c";
+		    width: 1em;
+		    line-height: 1em;
+		    right: rem(20);
+		    top: 50%;
+		    font-family: 'icomoon' !important;
+		    font-size: $font-size-lg;
+		    margin-top: -0.5em;
+		    color: $gray-400;
+		}
+
+		&:hover {
+			&::after {
+				@include translate(10px,0);
+			}
+		}
+	}
+
+	.lavalamp-object {
+		display: block;
+		position: absolute;
+		background: $border-color;
+	}
+}
+
+
+// vertical - rename to minimal 
+.nav-accordion {
+	.nav-item {
+
+		&:not(:first-child) {
+			margin-top: rem(10);
+		}
+
+		&.active {
+			> .nav-link { 
+				color: $black; 
+
+				&::before {
+					color: $black;
+				}
+			}
+		}
+
+		[data-toggle="collapse"] {
+			&::before {
+				position: absolute;
+			    content: "\e93a";
+			    width: 1em;
+			    line-height: 1em;
+			    right: 0;
+			    top: 50%;
+			    font-family: 'icomoon' !important;
+			    font-size: $font-size-lg;
+			    text-align: center;
+			    margin-top: -0.5em;
+			    color: $gray-400;
+			    @include transition(0.2s);
+			}
+
+			&[aria-expanded="true"] {
+				&::before {
+					@include rotate(180deg);
+				}
+			}
+		}
+
+		.nav-link {
+			@include transition;
+			position: relative;
+			padding: 0;
+
+			&:hover { 
+				color: $black;
+
+				&::before {
+					color: $primary;
+				}
+			}
+		}
+
+		.nav {
+			margin-top: rem(5);
+			padding: rem(5) rem(10);
+
+			.nav-item {
+				&:not(:first-child) {
+					margin-top: rem(5);
+				}
+
+				.nav-link {
+					font-size: $font-size-sm;
+				}
+			}
+
+		}
+	}
+}
+
+
+// tabs
+//
+.nav-tabs {
+	display: inline-flex;
+	border: 0;
+
+	.lavalamp-object {
+		display: block;
+		position: absolute;
+		border-width: 0 0 rem(2) 0;
+		border-style: solid;
+		border-color: $black;
+	}
+
+	.nav-item {
+		&:not(:last-child) {
+			margin-right: rem(20);
+		}
+	}
+
+	.nav-link {
+		padding: rem(10) 0;
+		border: 0;
+		text-transform: uppercase;
+
+		&.active {
+			background: transparent;
+		}
+	}
+
+	&[class*="-column"] {
+		align-items: flex-start;
+
+		.nav-item {
+			&:not(:last-child) {
+				margin-bottom: rem(10);
+			}
+		}
+
+		.nav-link {
+			padding: rem(5) 0;
+		}
+	}
+
+	&[class*="-fill"] {
+		display: flex;
+
+		.nav-link {
+			padding: rem(20) 0;
+		}
+	}
+}
+
+
+// component
+//
+.nav-component {
+	display: inline-flex;
+	border: $border-width solid $border-color;
+
+	.lavalamp-object {
+		display: block;
+		position: absolute;
+		background: $border-color;
+	}
+
+	.nav-link {
+		padding: rem(5) rem(10);
+		border: 0;
+		text-transform: uppercase;
+		font-size: rem(14);
+
+		&.active {
+			background: transparent;
+		}
+	}
+}
+
+// lavalamp
+//
+.lavalamp {
+	a {
+		cursor: pointer;
+	}
+}

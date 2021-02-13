@@ -1,0 +1,140 @@
+//
+// navbar
+//
+//
+
+
+.navbar {
+  position: static;
+  width: 100%;
+  margin: 0 rem(-10);
+
+  // on small screens
+  @include media-breakpoint-down(md) {
+    min-height: auto;
+    margin: 0;
+    padding: ($grid-gutter-width / 2);
+  }
+
+  .row {
+    min-width: 100%;
+  }
+}
+
+.navbar-brand {
+  margin: 0;
+  padding: rem(10) 0;
+
+  img {
+    display: block;
+  }
+}
+
+.navbar-toggler {
+  border: 0;
+}
+
+@include media-breakpoint-up(lg) {
+  .navbar {
+    > div {
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+      flex-basis: 40%!important;
+    }
+  }
+}
+
+
+// navbar navigation
+.navbar-nav {
+
+  @include media-breakpoint-up(lg) {    
+    .nav-item {
+      &:hover {
+        .nav-link,
+        .nav-icon {
+          border-color: currentColor;
+        }
+      }
+
+      .nav-link,
+      .nav-icon {
+        padding: 0 rem(10);
+        line-height: $header-height - .125rem;
+        border-bottom: 2px solid transparent;
+
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .nav-link {
+    @include transition;
+    text-transform: uppercase;
+    font-weight: $font-weight-bold;
+    outline: none;
+    z-index: 50;
+  }
+
+  .nav-icon {
+    display: block;
+    cursor: pointer;
+
+    &::after {
+      border-top-color: $gray-600!important;
+    }
+
+    span {
+      font-size: $font-size-sm;
+      color: $gray-600;
+    }
+
+    i {
+      width: 1em;
+      height: 1em;
+      color: $gray-600;
+      font-size: $font-size-lg;
+    }
+
+    @include media-breakpoint-up(lg) {
+      i {
+        padding: rem(5);
+      }
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    .dropdown-menu {
+      @include no-shadow();
+      padding: rem(10);
+      border: $border-width solid $border-color;
+    }
+  }
+}
+
+.navbar-nav--icons {
+  @include media-breakpoint-down(md) {
+    flex-direction: row;
+
+    .nav-item:not(:first-child) {
+      margin-left: rem(5);
+    }
+
+    .nav-icon[aria-expanded="true"] {
+      i:before {
+        content: "\ea1d";
+      }
+    }
+
+    i {
+      width: 1em;
+      height: 1em;
+      padding: rem(5);
+      font-size: $font-size-base;
+    }
+
+  }
+}

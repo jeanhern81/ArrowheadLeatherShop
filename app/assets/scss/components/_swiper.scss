@@ -1,0 +1,138 @@
+// Swiper
+//
+//
+//
+
+.swiper-container {
+	.swiper-slide {
+		height: auto;
+		overflow: hidden;
+	}
+
+	.container,
+	.container-fluid {
+		height: 100%;
+
+		> .row {
+			height: 100%;
+			padding-top: rem(100);
+			padding-bottom: rem(100);
+		}
+	}
+}
+
+
+// swiper footer
+.swiper-footer {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	z-index: 40;
+
+	.container,
+	.container-fluid {
+		> .row {
+			height: rem(100);
+			padding: 0;
+		}
+	}
+}
+
+
+
+// pagination
+.swiper-pagination {
+	color: $white;
+}
+
+
+// navigation
+//
+.swiper-navigation {
+	display: inline-block;
+
+	> * {
+		display: inline-block;
+	}
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+	@include transition;
+	position: relative;
+	top: auto;
+	right: auto;
+	bottom: auto;
+	left: auto;
+    width: rem(40);
+    height: rem(40);
+    margin-top: 0;
+    text-align: center;
+    vertical-align: top;
+    background-image: none!important;
+    outline: none;
+
+    &::before {
+    	@include transition;
+    	display: block;
+    	position: absolute;
+    	top: 0;
+    	right: 0;
+    	bottom: 0;
+    	left: 0;
+    	color: rgba($white, .75);
+    	line-height: rem(40);
+    	font-family: 'icomoon';
+    	font-size: rem(24);
+    }
+
+    &:hover::before {
+    	color: $white;
+    }
+
+    &.swiper-button-disabled {
+    	opacity: .2;
+    }
+}
+
+.swiper-button-prev::before { content: "\e91c" }
+.swiper-button-next::before { content: "\e91e" }
+
+
+.swiper-pagination {
+	position: relative;
+	top: auto;
+	right: auto;
+	bottom: auto;
+	left: auto;
+	width: auto;
+	line-height: rem(40);
+}
+
+
+
+// Zoom
+.image-zoom {
+	@include scale(1.2);
+	@include transition(10s);
+}
+
+.swiper-slide-active {
+	.image-zoom {
+		@include scale(1);
+	}
+}
+
+
+
+// Responsive
+//
+//
+@include media-breakpoint-down(sm) {
+	.swiper-container {
+		[class*="vh"] {
+			height: auto!important;
+			max-height: auto!important;
+		}
+	}
+}

@@ -1,0 +1,166 @@
+//
+// buttons
+//
+//
+
+
+.btn {
+	text-transform: uppercase;
+}
+
+.btn-circle {
+	border-radius: 50%;
+}
+
+// icon button
+//
+.btn-ico {
+  position: relative;
+  box-sizing: content-box;
+  width: $input-height;
+  height: $input-height;
+  padding: 0;
+
+  &[class*="-sm"] {
+  	width: $input-height-sm;
+  	height: $input-height-sm;
+  }
+
+  &[class*="-lg"] {
+  	width: $input-height-lg;
+  	height: $input-height-lg;
+  }
+
+  i {
+    @include translate(-50%,-50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+}
+
+// square buttons group
+//
+.btn-group-square {
+	display: flex;
+	flex-wrap: wrap;
+	margin: $border-width 0 0 $border-width;
+
+	&[class*="-sm"] {
+		.btn {
+			width: $input-height-sm;
+			height: $input-height-sm;
+			line-height: $input-height-sm;
+		}
+	}
+
+	&[class*="-lg"] {
+		.btn {
+			width: $input-height-lg;
+			height: $input-height-lg;
+			line-height: $input-height-lg;
+		}
+	}
+
+	.btn {
+		@include transition;
+		position: relative;
+		padding: 0;
+		width: $input-height;
+		height: $input-height;
+		margin-top: -$border-width;
+		margin-left: -$border-width;
+		font-size: rem(12);
+		line-height: $input-height;
+		border: $border-width solid $border-color;
+		z-index: 5;
+		cursor: pointer;
+
+		&:hover { color: $black; }
+
+		&.active {
+			color: $white;
+			border-color: $black;
+			background: $black;
+			z-index: 10;
+		}
+	}
+}
+
+
+
+// square buttons group - colors
+//
+.btn-group-colors {
+	margin-left: rem(-2);
+
+	> .btn {
+		border: 0;
+		margin: 0;
+		background: transparent;
+
+		&::before {
+			content: "";
+			@include transition;
+			position: absolute;
+			top: $border-width;
+			right: $border-width;
+			bottom: $border-width;
+			left: $border-width;
+			border-radius: 50%;
+			background: currentColor!important;
+		}
+
+
+		&::after {
+			@include transition;
+			@include translate(-50%,-50%);
+			content: "\e937";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: rem(40);
+			height: rem(40);
+			line-height: rem(40);
+			display: block;
+			color: $white;
+			font-family: 'icomoon';
+			font-size: rem(20);
+			border-radius: 50%;
+			opacity: 0;
+		}
+
+		&.active,
+		&:hover {
+			background: transparent;		
+
+			&::after {
+				opacity: 1;
+			}
+		}
+
+		&.text-white {
+			&::before {
+				border: $border-width solid $border-color;
+			}
+			&::after {
+				color: $gray-400;
+			}
+		}
+
+	}
+}
+
+
+// colors
+@each $color, $value in $colors {
+  .btn-#{$color} {
+    @include button-variant($value, $value);
+  }
+}
+
+@each $color, $value in $colors {
+  .btn-outline-#{$color} {
+    @include button-outline-variant($value);
+  }
+}

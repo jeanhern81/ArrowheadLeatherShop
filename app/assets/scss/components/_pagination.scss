@@ -1,0 +1,31 @@
+//
+// pagination
+//
+//
+
+.pagination {
+  > * {
+
+    &:first-child,
+    &:last-child {
+      flex-grow: 1;
+
+      a { 
+        display: inline-block;
+        border: $border-width solid $border-color;
+
+        &:hover {
+          border-color: $black;
+        }
+      }
+    }
+
+    &:last-child {
+      text-align: right;
+    }
+  }
+
+  a {
+    @include transition;
+  }
+}

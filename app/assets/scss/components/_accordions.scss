@@ -1,0 +1,72 @@
+//
+// accordions
+//
+//
+
+.accordion {
+	border: $border-width solid $border-color;
+
+	.card {
+		@include transition;
+		background: transparent;
+		overflow: visible;
+
+		&:not(:first-child) {
+			border-top: $border-width solid $border-color;
+		}
+
+		.card-header {
+			padding: 0;
+			border: 0;
+		}
+
+		button {
+			@include transition;
+			position: relative;
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+			padding: rem(15);
+			text-align: left;
+			text-transform: uppercase;
+			font-weight: $font-weight-normal;
+			font-size: $font-size-sm;
+			color: $gray-600;
+			letter-spacing: 0;
+			white-space: normal;
+			cursor: pointer;
+
+			&::before {
+				@include transition(0.2s);
+				position: absolute;
+			    content: "\e93a";
+			    width: 1em;
+			    line-height: 1em;
+			    right: rem(20);
+			    top: 50%;
+			    font-family: 'icomoon' !important;
+			    font-size: $font-size-base;
+			    margin-top: -0.5em;
+			    color: $gray-400;
+			}
+
+			&[aria-expanded="true"] {
+				&::before {
+					@include rotate(180deg);
+				}
+			}
+		}
+
+		.card-body {
+			padding: 0 rem(15) rem(15) rem(15);
+		}
+	}
+
+	input[type="radio"] {
+		position: absolute;
+		left: 9999px;
+		top: 0;
+		opacity: 0;
+	}
+
+}

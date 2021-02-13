@@ -1,0 +1,162 @@
+//
+// product
+//
+//
+
+.product {
+	position: relative;
+
+	&:hover {
+
+		.product-image {
+			img + img {
+				opacity: 1;
+			}
+		}
+	}
+
+	.badge {
+		position: absolute;
+		bottom: rem(10);
+		left: rem(10);
+		z-index: 50;
+	}
+}
+
+.product-image {
+	position: relative;
+	overflow: hidden;
+
+	a {
+		display: block;
+	}
+
+	img + img {
+		@include transition;
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+	}
+
+	+ .product-title {
+		margin-top: rem(10);
+	}
+}
+
+.product-title {
+	font-family: $font-family-sans-serif;
+	font-size: $font-size-sm;
+	margin-bottom: 0;
+
+	a {
+		display: block;
+		color: $black;
+		line-height: 1.4em;
+	}
+}
+
+.product-brand {
+	display: block;
+	font-size: $font-size-sm;
+}
+
+.product-price {
+	font-size: $font-size-sm;
+	font-weight: $font-weight-bold;
+	color: $black;
+}
+
+.product-meta {
+	position: absolute;
+	right: rem(10);
+	bottom: rem(10);
+	left: rem(10);
+	padding: rem(10);
+	background: $white;
+	color: inherit;
+}
+
+.product-like {
+	@include transition;
+	position: absolute;
+	top: rem(10);
+	right: rem(10);
+	display: block;
+	width: rem(40);
+	height: rem(40);
+	line-height: rem(40);
+	text-align: center;
+	background: $white;
+	border-radius: 50%;
+	color: $text-muted;
+	z-index: 20;
+
+	&::before {
+		@include transition;
+		content: "\eafe";
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		font-family: 'icomoon';
+		font-size: $font-size-lg;
+		color: $text-muted;
+	}
+
+	&:hover {
+		background: $dark;
+
+		&::before {
+			color: $white;
+		}
+	}
+}
+
+
+
+
+
+// categories
+//
+.category {
+	position: relative;
+	overflow: hidden;
+
+	figcaption {
+		@include transition;
+		display: block;
+		width: 100%;
+		padding: $card-spacer-y $card-spacer-x;
+		background: #ECE8E5;
+		color: $black;
+		text-align: center;
+	}
+
+	&:hover {
+		figcaption {
+			background: $black;
+			color: $white;
+		}
+	}
+}
+
+.category--alt {
+	figcaption {
+		@include transition;
+		position: absolute;
+		bottom: -$card-spacer-x;
+		background: $black;
+		color: $white;
+		opacity: 0;
+	}
+
+	&:hover {
+		figcaption {
+			bottom: 0;
+			opacity: 1;
+		}
+	}
+}

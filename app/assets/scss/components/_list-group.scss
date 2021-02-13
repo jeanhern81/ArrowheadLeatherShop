@@ -1,0 +1,30 @@
+//
+// list group
+//
+//
+
+
+// minimal
+//
+.list-group-minimal {
+	.list-group-item {
+		padding: 0;
+		background: transparent;
+		border: 0;
+		font-size: $font-size-sm;
+
+		+ .list-group-item {
+			margin-top: rem(10);
+		}
+
+		span {
+			color: $black;
+			margin-left: $card-spacer-y;
+
+			a {
+				color: $black;
+				@extend %underline;
+			}
+		}
+	}
+}

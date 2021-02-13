@@ -1,9 +1,4 @@
-# Thank you for purchasing Shopy #
-
-
-#### Docs and Examples
-
-The `documentation.html` contains all the static resources for your Themes docs and examples. To view, just open in your favorite browser!
+# Arrowhead leather Shop
 
 
 #### Gulpfile.js
@@ -30,6 +25,4 @@ From here on out, simply run `gulp` from your terminal and you're good to go!
 
 Or simply run `gulp build` from your terminal to build files without runing local server!
 
-#### Support
 
-If you experience any problems with the above, or if you think you've found a bug with your theme - please don't hesitate to reach out to contact@htmlhunters.com# ArrowheadLeatherShop

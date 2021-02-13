@@ -1,0 +1,365 @@
+//
+// custom forms
+//
+//
+
+
+// input combined
+//
+.input-combined {
+	position: relative;
+
+	.form-control {
+		position: relative;
+		border-color: transparent;
+		z-index: 10;
+
+		&:focus {
+			~ .input-combined_indicator {
+				border-color: $primary;
+			}
+
+			~ button {
+				border-color: $primary;
+
+				&:hover {
+					background: $primary;
+					color: $white;
+				}
+			}
+		}
+	}
+
+	button {
+		position: absolute;
+		right: 0;
+		top: rem(5);
+		bottom: rem(5);
+		right: rem(5);
+		padding-top: 0;
+		padding-bottom: 0;
+		border: 0;
+		border-left: $border-width solid $border-color;
+		z-index: 10;
+		background: transparent;
+
+		&:hover {
+			background: $border-color;
+		}
+	}
+
+	.input-combined_indicator {
+		@include transition;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		display: block;
+		border: $border-width solid $border-color;
+		z-index: 5;
+	}
+}
+
+
+// custom control
+//
+.custom-control {
+	padding-left: rem(25);
+
+	> * {
+		cursor: pointer;
+	}
+
+	.custom-control-input {
+		cursor: pointer;
+		justify-content: center;
+		flex-direction: column;
+		text-align: center;
+
+		&:checked {
+			~ .custom-control-label::before {
+				background-color: transparent;
+				border-color: $primary;
+				border-width: 8px;
+			}
+
+			~ .custom-control-label {
+				color: $black;
+			}
+		}
+
+		&:not(:disabled):active {
+			~ .custom-control-label::before {
+				background-color: transparent;
+				border-color: $input-border-color;
+				border-width: 4px;
+			}
+		}
+	}
+
+	.custom-control-label {
+		@include transition;
+		font-size: $font-size-sm;
+		color: $gray-600;
+
+		&::before {
+			@include transition;
+			@include translate(0,-50%);
+			top: 50%;
+			left: rem(-25);
+			border: $border-width solid $input-border-color;
+		}
+
+
+		&::after {
+			background: transparent!important;
+		}
+	}
+}
+
+// select2 - custom select
+//
+
+fieldset {
+	.select-frame {
+		padding: $input-padding-x-lg / 2;
+
+		.select2 {
+			
+			.select2-selection {
+				height: calc(#{$input-line-height-lg * 1em} + #{$input-btn-padding-y-lg} + #{$input-height-border});
+				padding: ($input-btn-padding-y-lg / 2);
+				border-color: transparent;
+
+				&[aria-expanded="true"] {
+					background: $white;
+					border-color: $black;
+				}
+			}
+		}
+	}
+}
+
+.select2 {
+	width: 100%!important;
+
+	*:focus {
+		outline: none;
+	}
+
+	.select2-selection {
+		@include transition;
+		@include font-size($input-font-size);
+		height: $input-height;
+		padding: $input-padding-y $input-padding-x;
+		border-radius: 0!important;
+		font-weight: $input-font-weight;
+		border: $input-border-width solid $input-border-color;
+		background-color: $input-bg;
+
+		.select2-selection__rendered {
+			padding: 0;
+			line-height: $input-line-height;
+			color: $black;
+		}
+
+		.select2-selection__arrow {
+			@include translate(0,-50%);
+			top: 50%;
+			right: $input-padding-x;
+		}
+
+		&[aria-expanded="true"] {
+			background: $white;
+			border-color: $black;
+		}
+	}
+}
+
+.select2-dropdown {
+	@include font-size($input-font-size);
+	@include border-radius($input-border-radius, 0);
+	border: $border-width solid $border-color;
+	background: $white;
+	overflow: hidden;
+	padding: $input-btn-padding-y;
+}
+
+.select2-results {
+	width: 100%;
+}
+
+.select2-results__options {
+	border: 0;
+
+	.select2-results__option {
+		@include font-size($input-font-size);
+		@include transition;
+		padding: rem(10) $input-padding-x;
+		color: $input-color;
+
+		&[aria-selected=true] {
+			background: $border-color;
+			color: $black;
+
+			&[class*="--highlighted"] {
+				background-color: $border-color;
+				color: $black;
+			}
+		}
+
+		&[class*="--highlighted"] {
+			color: $black;
+			background: rgba($border-color, .75);
+		}
+	}
+}
+
+
+// custom choice
+//
+.custom-choice {
+	width: 100%;
+	padding: 0;
+	cursor: pointer;
+
+	+ .custom-choice {
+		margin-top: rem(20);
+		padding-top: rem(20);
+		border-top: $input-border-width solid $input-border-color;
+	}
+
+	.custom-choice-title  {
+		font-size: $font-size-base;
+		margin-bottom: rem(5);
+		cursor: pointer;
+	}
+
+	.custom-control-label {
+		width: 100%;
+		padding: 0 rem(30) 0 0;
+		cursor: pointer;
+
+		&::before,
+		&::after {
+			@include translate(0,-50%);
+			top: 50%;
+			right: 0;
+			left: auto;
+			border-radius: 50%;
+		}
+	}
+}
+
+// ion range slider
+//
+.irs {
+	.irs-min,
+	.irs-max { display: none; }
+
+	.irs-from,
+	.irs-to,
+	.irs-single {
+		background: transparent;
+		padding: 0;
+		border-radius: 0;
+		color: $black;
+		font-size: rem(12);
+
+		&:before {
+			display: none;
+		}
+	}
+
+	.irs-line {
+		top: rem(30);
+		height: rem(2);
+		background: $border-color;
+	}
+
+	.irs-bar {
+		top: rem(30);
+		height: rem(2);
+		background: $black;
+	}
+
+	.irs-handle {
+		top: rem(21);
+		width: rem(20);
+		height: rem(20);
+		border-radius: 50%;
+		background: $black;
+		cursor: pointer;
+
+		> i {
+			display: none!important;
+		}
+
+		&:hover {
+			background: $primary;
+		}
+	}
+}
+
+//
+// inverted
+//
+.text-white {
+	.select2 {
+
+		.select2-selection {
+
+			.select2-selection__rendered {
+				color: $white;
+			}
+
+			&[aria-expanded="true"] {
+				background: $black;
+				border-color: $white;
+			}
+		}
+	}
+
+	.select2-dropdown {
+		background: $white;
+		border-color: transparent;
+	}
+
+	.input-combined {
+		position: relative;
+
+		.form-control {
+			color: $white;
+
+			&:focus {
+				~ .input-combined_indicator {
+					border-color: $white;
+				}
+
+				~ button {
+					border-color: $white;
+
+					&:hover {
+						background: $white;
+						color: $gray-900;
+					}
+				}
+			}
+		}
+
+		button {
+			color: $white;
+			border-color: rgba($white, .5);
+
+			&:hover {
+				background: $border-color;
+				color: $gray-900;
+			}
+		}
+
+		.input-combined_indicator {
+			border-color: rgba($white, .5);
+		}
+	}
+}

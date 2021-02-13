@@ -1,0 +1,169 @@
+//
+// forms
+//
+//
+
+
+.label {
+  font-size: rem(12);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: $gray-600;
+}
+
+// form group label
+.form-group {
+	margin: 0;
+	
+	label {
+		font-size: rem(12);
+		text-transform: uppercase;
+		letter-spacing: .1em;
+    color: $gray-600;
+	}
+}
+
+
+// fieldset
+fieldset {
+  border: $input-border-width solid $input-border-color;
+
+  .row {
+    position: relative;
+    margin: 0!important;
+
+    &:not(:first-child) {
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: $input-padding-x-lg;
+        right: $input-padding-x-lg;
+        display: block;
+        height: $input-border-width;
+        background-color: $input-border-color;
+      }
+    }
+
+    [class*="col"] {
+      padding: 0;
+
+      &:not(:first-child) {
+        &:before {
+          content: "";
+          position: absolute;
+          top: rem(10);
+          bottom: rem(10);
+          display: block;
+          width: $input-border-width;
+          background-color: $input-border-color;
+        }
+      }
+
+      @include media-breakpoint-down(md) {
+        &:not(:first-child) {
+          &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: auto;
+            left: rem(10);
+            right: rem(10);
+            display: block;
+            width: auto;
+            height: $input-border-width;
+            background-color: $input-border-color;
+          }
+        }
+      }
+    }
+
+
+  }
+
+  .form-control,
+  .custom-select {
+    border-color: transparent;
+
+    &:focus { border-color: transparent; }
+  }
+}
+
+// floating label
+//
+.form-label-group {
+  position: relative;
+
+  > label {
+  	@include transition;
+  	position: absolute;
+  	top: $border-width;
+  	left: $border-width;
+  	display: block;
+  	width: 100%;
+  	margin-bottom: 0; /* Override default `<label>` margin */
+  	padding: $input-padding-y-lg $input-btn-padding-x-lg;
+  	pointer-events: none;
+    font-size: $font-size-sm;
+    color: $gray-400;
+  	cursor: text; /* Match the input under the label */
+  }
+}
+
+.form-label-group input::-webkit-input-placeholder { color: transparent; }
+.form-label-group input:-ms-input-placeholder { color: transparent; }
+.form-label-group input::-ms-input-placeholder { color: transparent; }
+.form-label-group input::-moz-placeholder { color: transparent; }
+.form-label-group input::placeholder { color: transparent; }
+
+.form-label-group textarea::-webkit-input-placeholder { color: transparent; }
+.form-label-group textarea:-ms-input-placeholder { color: transparent; }
+.form-label-group textarea::-ms-input-placeholder { color: transparent; }
+.form-label-group textarea::-moz-placeholder { color: transparent; }
+.form-label-group textarea::placeholder { color: transparent; }
+
+
+.form-label-group {
+  input:not(:placeholder-shown) ~ label {
+    padding-top: $input-padding-y-lg * .5;
+    padding-bottom: 0;
+    font-size: rem(12);
+  }
+
+  textarea:not(:placeholder-shown) ~ label {
+    padding-top: $input-padding-y-lg * .5;
+    font-size: rem(12);
+  }
+
+  input:not(:placeholder-shown) {
+    padding-top: $input-padding-y-lg * 1.05;
+    padding-bottom: 0;
+  }
+
+  textarea:not(:placeholder-shown) {
+    padding-top: $input-padding-y-lg * 1.5;
+    padding-bottom: $input-padding-y-lg * .5;
+  }
+}
+
+/* Fallback for Edge
+-------------------------------------------------- */
+@supports (-ms-ime-align: auto) {
+  .form-label-group > label {
+    display: none;
+  }
+  .form-label-group input::-ms-input-placeholder {
+    color: $gray-400;
+  }
+}
+
+/* Fallback for IE
+-------------------------------------------------- */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .form-label-group > label {
+    display: none;
+  }
+  .form-label-group input:-ms-input-placeholder {
+    color: $gray-400;
+  }
+}

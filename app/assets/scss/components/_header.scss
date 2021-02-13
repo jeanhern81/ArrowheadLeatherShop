@@ -1,0 +1,30 @@
+//
+// header
+//
+//
+
+.header {
+	@include selection(none);
+	position: relative;
+	z-index: 1050;
+	background: $white;
+
+	&::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		height: $border-width;
+		background: $border-color;
+		z-index: -1;
+	}
+
+	&[class*="-absolute"] {
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+	}
+}

@@ -1,0 +1,318 @@
+//
+// carousel
+//
+//
+
+
+.owl-carousel {
+	position: relative;
+
+	&[class*="visible"] {
+		.owl-stage-outer { overflow: visible; }
+	}
+
+	.owl-nav {
+		button.owl-prev,
+		button.owl-next {
+			@include transition;
+			position: absolute;
+			top: 50%;
+			display: block;
+			width: rem(50);
+			height: rem(50);
+			margin-top: rem(-25);
+			text-align: center;
+			background: $white;
+			z-index: 50;
+
+			&::before {
+				@include transition;
+				display: block;
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				line-height: rem(50);
+				font-family: 'icomoon';
+				font-size: rem(22);
+				color: $black;
+			}
+
+			&:focus {
+				outline: none;
+			}
+
+			span {
+				display: none;
+			}
+
+		    &[class*="disabled"] {
+				opacity: 0;
+		    }
+
+		    &:hover {
+		    	background: $primary;
+
+		    	&::before {
+		    		color: $white;
+		    	}
+		    }
+		}
+
+
+		button.owl-prev {
+			@include translate(-50%, 0);
+			left: 0;
+			margin-left: -($grid-gutter-width / 2);
+
+			&::before { content: "\e93b" }
+		}
+
+
+		button.owl-next {
+			@include translate(50%, 0);
+			right: 0;
+			margin-right: -($grid-gutter-width / 2);
+
+			&::before { content: "\e93c" }
+		}
+	}
+}
+
+
+// masked
+.owl-carousel--mask {
+	.owl-item {
+		background: $gray-100;
+
+		> * {
+			@include transition;
+			opacity: 0;
+		}
+
+		&.active {
+			> * { opacity: 1; }
+
+			+ .owl-item {
+				> * { opacity: 1; }
+			}
+		}
+
+	}
+}
+
+
+// promo
+.owl-carousel-promo {
+	.owl-item {
+		@include transition;
+		opacity: 0;
+
+		&.active {
+			opacity: 1;
+		}
+	}
+
+	.owl-nav {
+		button.owl-prev,
+		button.owl-next {
+			background: transparent;
+
+			&::before {
+				color: rgba($white, .5);
+				font-size: rem(20);
+			}
+
+			&:hover {
+				background: transparent;
+				color: $white;
+			}
+		}
+
+		button.owl-prev {
+			@include translate(0, 0);
+			left: 0;
+			margin-left: 0;
+			text-align: left;
+
+			&::before { content: "\e93b" }
+		}
+
+
+		button.owl-next {
+			@include translate(0, 0);
+			right: 0;
+			margin-right: 0;
+			text-align: right;
+
+			&::before { content: "\e93c" }
+		}
+	}
+}
+
+
+
+// alternative navigation
+.owl-carousel--alt {
+	.owl-nav {
+		button.owl-prev,
+		button.owl-next {
+			background: transparent;
+
+			&::before {
+				font-size: rem(30);
+			}
+
+			&:hover {
+				background: transparent;
+
+				&::before {
+					color: rgba($black, 1);
+				}
+			}
+		}
+
+		button.owl-prev {
+			@include translate(0, 0);
+			left: 0;
+			margin-left: 0;
+
+			&::before { content: "\e91c" }
+		}
+
+
+		button.owl-next {
+			@include translate(0, 0);
+			right: 0;
+			margin-right: 0;
+
+			&::before { content: "\e91e" }
+		}
+	}
+}
+
+// external navigation
+.owl-external-nav {
+	button.owl-prev,
+	button.owl-next {
+		@include transition;
+		@include translate(0, -50%);
+		position: absolute;
+		top: 50%;
+		display: block;
+		width: rem(60);
+		height: rem(60);
+		background: transparent;
+		text-align: center;
+		border: 0;
+		z-index: 50;
+		opacity: .25;
+
+		&::before {
+			@include transition;
+			display: block;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			line-height: rem(60);
+			font-family: 'icomoon';
+			font-size: rem(30);
+			color: $black;
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		span {
+			display: none;
+		}
+
+	    &[class*="disabled"] {
+			opacity: 0;
+	    }
+
+	    &:hover {
+	    	opacity: 1;
+	    }
+	}
+
+
+	button.owl-prev {
+		left: 0;
+
+		&::before { content: "\e91c" }
+	}
+
+
+	button.owl-next {
+		right: 0;
+
+		&::before { content: "\e91e" }
+	}
+}
+
+// slide 
+.owl-carousel--slide {
+	.owl-item {
+		@include transition;
+
+
+		@include media-breakpoint-up(lg) {
+			&.active {
+				+ .owl-item {
+					opacity: 0;
+				}
+			}
+		}
+		
+	}
+}
+
+
+// thumbs naviagation
+//
+.owl-thumbs {
+	.owl-thumb-item {
+		@include transition;
+		display: block;
+		border: $border-width solid transparent;
+		cursor: pointer;
+		overflow: hidden;
+
+		img {
+			@include transition;
+			opacity: .5;
+		}
+
+		&.active {
+			border-color: $black;
+			
+			img {
+				opacity: 1;
+			}
+		}
+
+		&:hover {
+			img {
+				opacity: 1;
+			}
+		}
+	}
+
+	@include media-breakpoint-up(md) {
+		.owl-thumb-item:not(:last-child) {
+			margin-bottom: rem(10);
+		}
+	}
+
+	@include media-breakpoint-down(md) {
+		.owl-thumb-item {
+			display: inline-block;
+			max-width: rem(80);
+		}
+	}
+}

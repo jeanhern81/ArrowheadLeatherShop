@@ -1,0 +1,56 @@
+//
+// users
+//
+//
+
+.avatar {
+	position: relative;
+	width: rem(60);
+	height: rem(60);
+	border-radius: 50%;
+
+	&[class*="--sm"] {
+		width: rem(40);
+		height: rem(40);
+	}
+
+	&[class*="--lg"] {
+		width: rem(80);
+		height: rem(80);
+	}
+
+	&[class*="--xl"] {
+		width: rem(100);
+		height: rem(100);
+	}
+}
+
+.status {
+	&::after {
+		content: "\eaae";
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		display: block;
+		width: rem(20);
+		height: rem(20);
+		line-height: rem(20);
+		border-radius: 50%;
+		background: $gray-200;
+		font-family: 'icomoon';
+		text-align: center;
+		color: $white;
+	}
+
+	&[class*="--lg"] {
+		&::after {
+			width: rem(30);
+			height: rem(30);
+			line-height: rem(30);
+		}
+	}
+
+	&.verified::after {
+		background: $green;
+	}
+}

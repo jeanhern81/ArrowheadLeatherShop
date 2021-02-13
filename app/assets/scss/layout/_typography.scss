@@ -1,0 +1,234 @@
+//
+// typography
+//
+//
+
+
+
+
+// spacing
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5 {  
+  &:last-child { margin-bottom: 0; }
+}
+
+p, blockquote, .alert, ul, ol {
+  &:last-child { margin-bottom: 0; }
+}
+
+
+ul, ol {
+  list-style: none;
+  padding: 0;
+}
+
+
+b, strong {
+  font-weight: $font-weight-bold;
+}
+
+hr {
+  margin-top: ($grid-gutter-width / 2);
+  margin-bottom: ($grid-gutter-width / 2 );
+}
+
+dt {
+  font-weight: $font-weight-normal;
+}
+
+// underline
+//
+%underline {
+  @include transition;
+  position: relative;
+
+  &::before {
+    @include transition;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    border-bottom: $border-width solid currentColor;
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    &::before {
+      width: 100%;
+    }
+  }
+}
+.underline { @extend %underline; }
+.underlined {
+  position: relative;
+  
+  &::before {
+    @include transition;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-bottom: $border-width solid currentColor;
+  }
+
+  &:hover {
+    &::before {
+      left: auto;
+      width: 0;
+    }
+  }
+}
+
+
+// blockquote
+//
+.blockquote {
+  position: relative;
+  padding: rem(10) rem(20);
+  border-left: rem(2) solid $primary;
+
+  p {
+    font-size: $font-size-lg;
+  }
+}
+
+
+// custom inlines
+.folder,
+.file,
+.terminal {
+  @include transition;
+  position: relative;
+  display: inline-block;
+  margin: .2rem;
+  padding: 0 .5rem 0 2rem;
+  border: $border-width solid $border-color;
+  background: transparent;
+  font-size: inherit;
+  color: inherit;
+  
+  &::before {
+    @include transition;
+    @include translate(0,-50%);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    display: inline-block;
+    width: rem(30);
+    height: 100%;
+    text-align: center;
+    content: "\e978";
+    color: $black;
+    font-family: 'icomoon' !important;
+  }
+}
+
+.file {
+  &::before {
+    content: "\e971";
+  }
+}
+
+.terminal {
+  &::before {
+    content: "\e9f5";
+  }
+}
+
+
+
+// icons
+[class^="icon-"], [class*=" icon-"] {
+  display: inline-block;
+  width: 1em;
+  line-height: 1em;
+  box-sizing: content-box;
+  text-align: center;
+  border: $border-width solid transparent;
+
+  &[class*="-bordered"] {
+    border-color: currentColor;
+    border-radius: 50%;
+    border-width: $border-width;
+    padding: .5em;
+
+  }
+
+  &[class*="-filled"] {
+    border-radius: 50%;
+    border-color: transparent;
+    padding: .5em;
+  }
+
+}
+
+
+
+// line height
+.lh-sm { line-height: 1.2em; }
+.lh-lg { line-height: 1.6em; }
+
+
+
+// text styles
+%eyebrow {
+  display: inline-block;
+  font-size: rem(12);
+  font-family: $headings-font-family;
+  font-weight: $font-weight-normal;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+.eyebrow { @extend %eyebrow; }
+
+
+//
+// text white
+//
+.text-white {
+
+  h1, h2, h3, h4, h5, h6
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: $white;
+  }
+
+  hr {
+    border-color: $white;
+  }
+
+  a {
+    color: $white;
+  }
+
+  .eyebrow {
+    color: rgba($white, .5);
+  }
+
+  .decorated::before {
+    background: rgba($white, .5);
+  }
+
+  .text-muted {
+    color: rgba($white, .5)!important;
+  }
+
+}
+
+
+// responsive
+// @include media-breakpoint-down(md) {
+//   .display-1 { font-size: ($display1-size * .75) }
+//   .display-2 { font-size: ($display2-size * .75) }
+//   .display-3 { font-size: ($display3-size * .75) }
+//   .display-4 { font-size: ($display4-size * .75) }
+//   h1, .h1 { font-size: ($h1-font-size * .75) }
+//   h2, .h2 { font-size: ($h2-font-size * .75) }
+//   h3, .h3 { font-size: ($h3-font-size * .75) }
+//   h4, .h4 { font-size: ($h4-font-size * .75) }
+//   h5, .h5 { font-size: ($h5-font-size * .75) }
+// }
